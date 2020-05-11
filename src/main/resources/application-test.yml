@@ -1,0 +1,27 @@
+spring:
+  redis:
+    #jedis:
+    #  pool:
+    #最大连接数量
+    #    max-active: 20
+    #最大空闲数量
+    #    max-active: 20
+    #最大等待时间
+    #    max-wait: 3000ms
+    #最小空闲数量
+    #    min-idle: 0
+    lettuce:
+      pool:
+        max-active: 2
+        max-idle: 1
+        max-wait: 30000ms
+        min-idle: 0
+      #host: 127.0.0.1
+      #port: 6379
+      #sentinel:
+      #  master: mymaster
+      # 哨兵ip:port 不是redis的ip:port
+    #  nodes: 127.0.0.1:26379
+    cluster:
+      # 多个节点已","分割
+      nodes: 127.0.0.1:30001,127.0.0.1:30002,127.0.0.1:30003,127.0.0.1:30004,127.0.0.1:30005,127.0.0.1:30006
