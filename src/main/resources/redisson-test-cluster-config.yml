@@ -14,7 +14,7 @@ clusterServersConfig:
   reconnectionTimeout: 3000
   # 执行失败最大次数
   failedAttempts: 3
-  password: null
+  password: test1234
   # 单个连接最大订阅数量
   subscriptionsPerConnection: 5
   clientName: null
@@ -38,12 +38,12 @@ clusterServersConfig:
   readMode: SLAVE
   # 集群地址
   nodeAddresses:
-    - "redis://192.168.111.128:7111"
-    - "redis://127.0.0.1:7112"
-    - "redis://127.0.0.1:7113"
-    - "redis://127.0.0.1:7114"
-    - "redis://127.0.0.1:7115"
-    - "redis://127.0.0.1:7116"
+    - "redis://127.0.0.1:30001"
+    - "redis://127.0.0.1:30002"
+    - "redis://127.0.0.1:30003"
+    - "redis://127.0.0.1:30004"
+    - "redis://127.0.0.1:30005"
+    - "redis://127.0.0.1:30006"
   # 对Redis集群节点状态扫描的时间间隔。单位是毫秒。默认1000
   scanInterval: 1000
   #这个线程池数量被所有RTopic对象监听器，RRemoteService调用者和RExecutorService任务共同共享。默认2

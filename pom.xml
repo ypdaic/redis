@@ -20,13 +20,14 @@
 
     <profiles>
         <profile>
-            <id>dev</id>
+            <id>dev-cluster</id>
             <!--默认激活dev配置-->
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
                 <env>dev</env>
+                <mode>cluster</mode>
             </properties>
             <!--如果properties很多，可以通过下面的方法进行加载,如果不存在配置文件
             则需要关闭该配置，否则编译不过-->
@@ -37,13 +38,94 @@
             <!--</build>-->
         </profile>
         <profile>
-            <id>test</id>
+            <id>dev-master</id>
+            <!--默认激活dev配置-->
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <env>dev</env>
+                <mode>master</mode>
+            </properties>
+        </profile>
+        <profile>
+            <id>dev-sentinel</id>
+            <!--默认激活dev配置-->
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <env>dev</env>
+                <mode>sentinel</mode>
+            </properties>
+            <!--如果properties很多，可以通过下面的方法进行加载,如果不存在配置文件
+            则需要关闭该配置，否则编译不过-->
+            <!--<build>-->
+            <!--<filters>-->
+            <!--<filter>config-dev.properties</filter>-->
+            <!--</filters>-->
+            <!--</build>-->
+        </profile>
+        <profile>
+            <id>dev-standalone</id>
+            <!--默认激活dev配置-->
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <env>dev</env>
+                <mode>standalone</mode>
+            </properties>
+            <!--如果properties很多，可以通过下面的方法进行加载,如果不存在配置文件
+            则需要关闭该配置，否则编译不过-->
+            <!--<build>-->
+            <!--<filters>-->
+            <!--<filter>config-dev.properties</filter>-->
+            <!--</filters>-->
+            <!--</build>-->
+        </profile>
+        <profile>
+            <id>test-cluster</id>
             <!--默认激活dev配置-->
             <activation>
                 <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
                 <env>test</env>
+                <mode>cluster</mode>
+            </properties>
+        </profile>
+        <profile>
+            <id>test-sentinel</id>
+            <!--默认激活dev配置-->
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <env>test</env>
+                <mode>sentinel</mode>
+            </properties>
+        </profile>
+        <profile>
+            <id>test-standalone</id>
+            <!--默认激活dev配置-->
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <env>test</env>
+                <mode>standalone</mode>
+            </properties>
+        </profile>
+        <profile>
+            <id>test-master</id>
+            <!--默认激活dev配置-->
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <env>test</env>
+                <mode>master</mode>
             </properties>
         </profile>
         <profile>
@@ -125,9 +207,9 @@
                 将使用maven配置的值进行替换-->
                 <!--includes表示只打包指定的文件-->
                 <includes>
-                    <include>*-${env}.yml</include>
                     <include>application.yml</include>
-                    <include>redisson-${env}-*.yml</include>
+                    <include>application-${env}-${mode}.yml</include>
+                    <include>redisson-${env}-${mode}*.yml</include>
                 </includes>
             </resource>
 

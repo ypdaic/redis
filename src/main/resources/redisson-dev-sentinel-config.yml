@@ -1,4 +1,4 @@
-clusterServersConfig:
+sentinelServersConfig:
   # 连接空闲超时，单位：毫秒 默认10000
   idleConnectionTimeout: 10000
   pingTimeout: 1000
@@ -36,17 +36,13 @@ clusterServersConfig:
   # 订阅操作的负载均衡模式
   subscriptionMode: SLAVE
   # 只在从服务器读取
-  readMode: MASTER_SLAVE
-  # 集群地址
-  nodeAddresses:
-    - "redis://192.168.111.128:30001"
-    - "redis://192.168.111.128:30002"
-    - "redis://192.168.111.128:30003"
-    - "redis://192.168.111.128:30004"
-    - "redis://192.168.111.128:30005"
-    - "redis://192.168.111.128:30006"
-  # 对Redis集群节点状态扫描的时间间隔。单位是毫秒。默认1000
-  scanInterval: 1000
+  readMode: SLAVE
+  # 哨兵地址
+  sentinelAddresses:
+    - "redis://192.168.111.128:26380"
+    - "redis://192.168.111.128:26381"
+    - "redis://192.168.111.128:26382"
+  masterName: "mymaster"
   #这个线程池数量被所有RTopic对象监听器，RRemoteService调用者和RExecutorService任务共同共享。默认2
 threads: 0
 #这个线程池数量是在一个Redisson实例内，被其创建的所有分布式数据类型和服务，以及底层客户端所一同共享的线程池里保存的线程数量。默认2
