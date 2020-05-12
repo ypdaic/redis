@@ -24,7 +24,7 @@ public class RedisTest {
     public JSONObject clusterTestSet() {
         new Thread(() -> {
             for (int i = 0; i < 1000; i++) {
-                String key = "foo" + i;
+                String key = "foo{hello}" + i;
                 redisTemplate.boundValueOps(key).set(i);
 
                 log.info("插入的数据:{}", key);
